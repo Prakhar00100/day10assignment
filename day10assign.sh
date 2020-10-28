@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-declare -i result
+declare -i arr
 
 read -p "enter a b c : " a b c
 
@@ -21,16 +21,33 @@ s4=$((`expr $a%$b+$c`));
 
 echo " s4 - " $s4
 
-
 temp=0
-result[((temp++))]="$s1"
-result[((temp++))]="$s2"
-result[((temp++))]="$s3"
-result[((temp))]="$s4"
+arr[((temp++))]="$s1"
+arr[((temp++))]="$s2"
+arr[((temp++))]="$s3"
+arr[((temp))]="$s4"
 
-echo "dictionary -" ${!result[@]}
+echo "dictionary -" ${!arr[@]}
 
-echo "Result in array "${result[@]}
+echo "Result in array "${arr[@]}
+
+for ((i = 0; i<4; i++)) 
+do
+
+    for((j = 0; j<4-i-1; j++)) 
+    do
+
+        if [ ${arr[j]} -lt ${arr[$((j+1))]} ] 
+        then 
+            temp=${arr[j]} 
+            arr[$j]=${arr[$((j+1))]}   
+            arr[$((j+1))]=$temp 
+        fi
+    done
+done
+
+echo "Array in sorted order :"
+echo ${arr[*]} 
 
 
 
