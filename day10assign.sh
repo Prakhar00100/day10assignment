@@ -3,8 +3,9 @@
 read -p "enter a b c : " a b c
 
 
-s2=$((`expr $a*$b+$c`));
+s3=$((`expr $c+$a/$b`));
 
-echo " s2 - " $s2
+echo " s3 - " $s3
+
 
 
