@@ -2,10 +2,10 @@
 
 read -p "enter a b c : " a b c
 
+s4=$((`expr $a%$b+$c`));
 
-s3=$((`expr $c+$a/$b`));
+echo " s4 - " $s4
 
-echo " s3 - " $s3
 
 
 
